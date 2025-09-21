@@ -31,6 +31,10 @@ import arduinoUnoR4WifiIconURL from './arduinoUnoR4Wifi/arduinoUnoR4Wifi.png';
 import arduinoUnoR4WifiConnectionIconURLL from './arduinoUnoR4Wifi/arduinoUnoR4Wifi-illustration.svg';
 import arduinoUnoR4WifiConnectionSmallIconURL from './arduinoUnoR4Wifi/arduinoUnoR4Wifi-small.svg';
 
+import spotpearIconURL from './spotpear/spotpear.png';
+import spotpearConnectionIconURLL from './spotpear/spotpear-illustration.svg';
+import spotpearConnectionSmallIconURL from './spotpear/spotpear-small.svg';
+
 import microbitIconURL from './microbit/microbit.png';
 import microbitConnectionIconURLL from './microbit/microbit-illustration.svg';
 import microbitConnectionSmallIconURL from './microbit/microbit-small.svg';
@@ -645,6 +649,42 @@ const deviceData = [
         programLanguage: ['block', 'c', 'cpp'],
         tags: ['arduino'],
         helpLink: 'https://wiki.openblock.cc/general-hardware-guidelines/boards/raspberry-pi-pico2w'
+    },
+    {
+        name: 'SpotPear C3-1.44',
+        deviceId: 'spotpear',
+        manufactor: 'spotpear.com',
+        learnMore: 'https://www.spotpear.com',
+        type: DeviceType.microbit,
+        iconURL: spotpearIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="The pocket-sized computer transforming digital skills learning."
+                description="Description for the micro:bit device"
+                id="gui.device.spotpear.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: false,
+        serialportRequired: true,
+        defaultBaudRate: '115200',
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: false,
+        connectionIconURL: spotpearConnectionIconURLL,
+        connectionSmallIconURL: spotpearConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Message to help people connect to their device."
+                id="gui.device.connectingMessage"
+            />
+        ),
+        programMode: ['upload'],
+        programLanguage: ['block', 'microPython'],
+        tags: ['microPython'],
+        helpLink: 'https://wiki.openblock.cc/bitbashers'
     },
     {
         name: 'Micro:bit',
