@@ -16,13 +16,20 @@ var postcssImport = require('postcss-import');
 const STATIC_PATH = process.env.STATIC_PATH || '/static';
 const MONACO_DIR = path.resolve(__dirname, './node_modules/monaco-editor');
 
+const fs = require('fs');
+
 const base = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
         host: '0.0.0.0',
-        port: process.env.PORT || 8601
+        port: process.env.PORT || 8801,
+	// NOTE: mkcert localhost 127.0.0.1 or mkcert lanhost 192.168.9.99
+	https: {
+	    key: fs.readFileSync(path.resolve(__dirname, 'lanhost+1-key.pem')), // Path to your generated key file
+            cert: fs.readFileSync(path.resolve(__dirname, 'lanhost+1.pem')),   // Path to your generated certificate file
+	}
     },
     output: {
         library: 'GUI',
