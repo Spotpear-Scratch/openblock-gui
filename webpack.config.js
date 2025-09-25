@@ -23,7 +23,7 @@ const base = {
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
-        host: '0.0.0.0',
+        host: process.env.HOST || '0.0.0.0',
         port: process.env.PORT || 8801,
 	// NOTE: mkcert localhost 127.0.0.1 or mkcert lanhost 192.168.9.99
 	https: {
