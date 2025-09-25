@@ -83,7 +83,93 @@ import makeymakeyIconURL from './makeymakey/makeymakey.png';
 import makeymakeyConnectionIconURL from './makeymakey/makeymakey-illustration.svg';
 import makeymakeyConnectionSmallIconURL from './makeymakey/makeymakey-small.svg';
 
+
 const deviceData = [
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="Unselect device"
+                description="Name for the unselect device"
+                id="gui.device.unselectDevice.name"
+            />
+        ),
+        deviceId: 'null',
+        iconURL: unselectDeviceIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Unselect the device, return to pure realtime programming mode."
+                description="Description for the unselect device"
+                id="gui.device.unselectDevice.description"
+            />
+        ),
+        featured: true,
+        programMode: ['realtime'],
+        programLanguage: ['block'],
+        tags: ['realtime']
+    },
+    {
+        name: 'SpotPear C3-1.44',
+        deviceId: 'spotpear',
+        manufactor: 'spotpear.com',
+        learnMore: 'https://www.spotpear.com',
+        type: DeviceType.spotpear,
+        iconURL: spotpearIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="The pocket-sized computer transforming digital skills learning."
+                description="Description for the micro:bit device"
+                id="gui.device.spotpear.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: false,
+        serialportRequired: true,
+        defaultBaudRate: '115200',
+        internetConnectionRequired: false,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: false,
+        connectionIconURL: spotpearConnectionIconURLL,
+        connectionSmallIconURL: spotpearConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Message to help people connect to their device."
+                id="gui.device.connectingMessage"
+            />
+        ),
+        programMode: ['upload'],
+        programLanguage: ['block', 'microPython'],
+        tags: ['microPython'],
+        helpLink: 'https://wiki.openblock.cc/bitbashers'
+    },
+    /**
+     * For those parent devices that exist in VM but are not displayed in GUI
+     */
+    {
+        deviceId: 'arduinoUnoUltra',
+        type: DeviceType.arduino,
+        featured: true,
+        disabled: false,
+        hide: true
+    },
+    {
+        deviceId: 'arduinoSE',
+        type: DeviceType.arduino,
+        featured: true,
+        disabled: false,
+        hide: true
+    },
+    {
+        deviceId: 'arduinoEsp8266',
+        type: DeviceType.arduino,
+        featured: true,
+        disabled: false,
+        hide: true
+    }
+];
+
+const xdeviceData = [
     /**
      * Unselect the deivce back to pure scratch mode
      */
