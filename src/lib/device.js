@@ -25,7 +25,7 @@ const DeviceType = keyMirror({
      * Microbit programming framework
      * Upload tools, etc. are different from standard MicroPython
      */
-    microbit: 
+    microbit: null,
     
     /**
      * spotpear programming framework
