@@ -741,7 +741,7 @@ const xdeviceData = [
         deviceId: 'spotpear',
         manufactor: 'spotpear.com',
         learnMore: 'https://www.spotpear.com',
-        type: DeviceType.microbit,
+        type: DeviceType.spotpear,
         iconURL: spotpearIconURL,
         description: (
             <FormattedMessage

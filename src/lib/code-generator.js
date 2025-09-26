@@ -8,7 +8,8 @@ const getGeneratorNameFromDeviceType = deviceType => {
         return 'Arduino';
     } else if (deviceType === DeviceType.python ||
         deviceType === DeviceType.microPython ||
-        deviceType === DeviceType.microbit) {
+        deviceType === DeviceType.microbit ||
+        deviceType === DeviceType.spotpear) {
         return 'Python';
     }
     return 'null';

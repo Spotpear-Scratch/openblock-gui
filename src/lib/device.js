@@ -25,13 +25,19 @@ const DeviceType = keyMirror({
      * Microbit programming framework
      * Upload tools, etc. are different from standard MicroPython
      */
-    microbit: null
+    microbit: 
+    
+    /**
+     * spotpear programming framework
+     * Upload tools, etc. are different from standard MicroPython
+     */
+    spotpear: null
 });
 
 const getLanguageFromDeviceType = deviceType => {
     if (deviceType === DeviceType.arduino) {
         return 'cpp';
-    } else if (deviceType === DeviceType.microPython || deviceType === DeviceType.microbit) {
+    } else if (deviceType === DeviceType.microPython || deviceType === DeviceType.microbit || deviceType === DeviceType.spotpear) {
         return 'python';
     }
     return 'null';
