@@ -915,7 +915,11 @@ const eventBlock = {
     [DeviceType.microbit]: `<block type="event_whenmicrobitbegin"/>
                                 <block type="event_whenmicrobitbuttonpressed"/>
                                 <block type="event_whenmicrobitpinbeingtouched"/>
-                                <block type="event_whenmicrobitgesture"/>`
+                                <block type="event_whenmicrobitgesture"/>`,
+    [DeviceType.spotpear]: `<block type="event_whenspotpearbegin"/>
+                                <block type="event_whenspotpearbuttonpressed"/>
+                                <block type="event_whenspotpearpinbeingtouched"/>
+                                <block type="event_whenspotpeargesture"/>`
 };
 
 /**
