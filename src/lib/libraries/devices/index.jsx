@@ -141,7 +141,7 @@ const deviceData = [
         programMode: ['upload'],
         programLanguage: ['block', 'microPython'],
         tags: ['microPython'],
-        helpLink: 'https://wiki.openblock.cc/bitbashers'
+        helpLink: 'https://github.com/Spotpear-Scratch/spotpear-scratch.github.io/wiki'
     },
     /**
      * For those parent devices that exist in VM but are not displayed in GUI
