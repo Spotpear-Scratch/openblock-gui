@@ -229,7 +229,8 @@ class MenuBar extends React.Component {
             'handleProgramModeUpdate',
             'handleScreenshot',
             'handleCheckUpdate',
-            'handleClearCache'
+            'handleClearCache',
+            'handleRequiresFirmwareUpdate'
         ]);
         this.state = {
             isOverflow: false
@@ -237,6 +238,7 @@ class MenuBar extends React.Component {
     }
     componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
+        this.props.vm.on('REQUIRES_FIRMWARE_UPDATE', this.handleRequiresFirmwareUpdate);
         this.props.vm.on('PERIPHERAL_DISCONNECTED', this.props.onDisconnect);
         this.props.vm.on('PROGRAM_MODE_UPDATE', this.handleProgramModeUpdate);
         window.addEventListener('resize', this.handleWindowsResize);
@@ -397,6 +399,15 @@ class MenuBar extends React.Component {
         } else {
             this.props.onWorkspaceIsNotEmpty();
         }
+    }
+    // FIXME-LMP: Message comes from VM to disable any pgrogram upload until firmware is updated
+    handleRequiresFirmwareUpdate (data) {
+
+        console.log("LMP-Debug: handleRequiresFirmwareUpdate in MenuBar coming from VM for firmware!");
+        this.props.setIsFirmwareUpdateRequired(true);      
+
+        // Warn once at connection...
+        alert("Please update the firmware of your connected device.");
     }
     handleProgramModeSwitchOnChange () {
         if (this.props.isRealtimeMode) {

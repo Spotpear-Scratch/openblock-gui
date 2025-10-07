@@ -25,6 +25,8 @@ import {
     openExtensionLibrary
 } from '../reducers/modals';
 
+import { setIsFirmwareUpdateRequired } from '../reducers/program-mode.js';
+
 import FontLoaderHOC from '../lib/font-loader-hoc.jsx';
 import LocalizationHOC from '../lib/localization-hoc.jsx';
 import SBFileUploaderHOC from '../lib/sb-file-uploader-hoc.jsx';
@@ -41,6 +43,14 @@ import GUIComponent from '../components/gui/gui.jsx';
 import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 
 class GUI extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isFirmwareUpdateRequired: false
+        };
+        this.setIsFirmwareUpdateRequired = this.setIsFirmwareUpdateRequired.bind(this); 
+    }
+
     componentDidMount () {
         setIsScratchDesktop(this.props.isScratchDesktop);
         this.props.onStorageInit(storage);
@@ -59,6 +69,13 @@ class GUI extends React.Component {
             this.props.onActivateBlocksTab();
         }
     }
+
+  setIsFirmwareUpdateRequired(value) {
+    console.log("setIsFirmwareUpdateRequired: " + value);
+  this.setState({ isFirmwareUpdateRequired: value });
+
+}
+
     render () {
         if (this.props.isError) {
             throw new Error(
@@ -119,7 +136,9 @@ GUI.propTypes = {
     projectId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     telemetryModalVisible: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired,
-    isRealtimeMode: PropTypes.bool
+    isRealtimeMode: PropTypes.bool,
+    setIsFirmwareUpdateRequired: PropTypes.func,
+    isFirmwareUpdateRequired: PropTypes.bool
 };
 
 GUI.defaultProps = {
@@ -159,7 +178,8 @@ const mapStateToProps = state => {
         telemetryModalVisible: state.scratchGui.modals.telemetryModal,
         tipsLibraryVisible: state.scratchGui.modals.tipsLibrary,
         vm: state.scratchGui.vm,
-        isRealtimeMode: state.scratchGui.programMode.isRealtimeMode
+        isRealtimeMode: state.scratchGui.programMode.isRealtimeMode,
+        isFirmwareUpdateRequired: state.scratchGui.programMode.isFirmwareUpdateRequired
     };
 };
 
@@ -171,7 +191,8 @@ const mapDispatchToProps = dispatch => ({
     onActivateSoundsTab: () => dispatch(activateTab(SOUNDS_TAB_INDEX)),
     onRequestCloseBackdropLibrary: () => dispatch(closeBackdropLibrary()),
     onRequestCloseCostumeLibrary: () => dispatch(closeCostumeLibrary()),
-    onRequestCloseTelemetryModal: () => dispatch(closeTelemetryModal())
+    onRequestCloseTelemetryModal: () => dispatch(closeTelemetryModal()),
+    setIsFirmwareUpdateRequired: (value) => dispatch(setIsFirmwareUpdateRequired(value))
 });
 
 const ConnectedGUI = injectIntl(connect(

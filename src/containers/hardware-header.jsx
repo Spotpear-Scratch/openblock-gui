@@ -24,6 +24,14 @@ class HardwareHeader extends React.Component {
     }
 
     handleUpload () {
+
+        // Property handled via VM events when firmware doesnt match, state is stored in program-mode reducer
+        if (this.props.isFirmwareUpdateRequired) 
+        {
+            alert("Please update the firmware of your connected device before uploading code.");
+            return;
+        }
+
         if (this.props.peripheralName) {
             const blocklyBlockCanvas = document.querySelector('.blocklyWorkspace .blocklyBlockCanvas');
             if (blocklyBlockCanvas.childNodes.length === 0) {

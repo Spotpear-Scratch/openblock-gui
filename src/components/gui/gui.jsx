@@ -135,6 +135,8 @@ const GUIComponent = props => {
         tipsLibraryVisible,
         vm,
         isRealtimeMode,
+        setIsFirmwareUpdateRequired,
+        isFirmwareUpdateRequired,
         ...componentProps
     } = omit(props, 'dispatch');
     if (children) {
@@ -275,6 +277,8 @@ const GUIComponent = props => {
                     onClickCheckUpdate={onClickCheckUpdate}
                     onClickClearCache={onClickClearCache}
                     onClickInstallDriver={onClickInstallDriver}
+                    setIsFirmwareUpdateRequired={setIsFirmwareUpdateRequired}
+                    isFirmwareUpdateRequired={isFirmwareUpdateRequired}
                 />
                 <Box className={styles.bodyWrapper}>
                     <Box className={styles.flexWrapper}>
@@ -417,6 +421,7 @@ const GUIComponent = props => {
                         <HardwareHeader
                             vm={vm}
                             stageSize={stageSize}
+                            isFirmwareUpdateRequired={isFirmwareUpdateRequired}
                         />) : null
                     }
                 </Box>
@@ -493,7 +498,9 @@ GUIComponent.propTypes = {
     telemetryModalVisible: PropTypes.bool,
     tipsLibraryVisible: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired,
-    isRealtimeMode: PropTypes.bool
+    isRealtimeMode: PropTypes.bool,
+    setIsFirmwareUpdateRequired: PropTypes.func,
+    isFirmwareUpdateRequired: PropTypes.bool
 };
 GUIComponent.defaultProps = {
     backpackHost: null,
@@ -513,7 +520,8 @@ GUIComponent.defaultProps = {
     isShared: false,
     loading: false,
     showComingSoon: false,
-    stageSizeMode: STAGE_SIZE_MODES.large
+    stageSizeMode: STAGE_SIZE_MODES.large,
+    isFirmwareUpdateRequired: false
 };
 
 const mapStateToProps = state => ({
