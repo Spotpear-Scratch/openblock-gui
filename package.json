@@ -7,6 +7,7 @@
     "build": "npm run clean && webpack --colors --bail",
     "clean": "rimraf ./build && mkdirp build",
     "deploy": "touch build/.nojekyll && gh-pages -t -d build --repo 'git@github.com:Spotpear-Scratch/spotpear-scratch.github.io.git' -m \"Build for $(git log --pretty=format:%H -n1) [skip ci]\"",
+    "validatesite": "touch build/.nojekyll && gh-pages -t -d build --repo 'git@github.com:LucienMP/spotpear-scratch-test.github.io.git' -m \"Build for $(git log --pretty=format:%H -n1) [skip ci]\"",
     "prune": "./prune-gh-pages.sh",
     "i18n:push": "tx-push-src openblock-editor interface translations/en.json",
     "i18n:src": "rimraf ./translations/messages/src && babel src > tmp.js && rimraf tmp.js && build-i18n-src ./translations/messages/src ./translations/",
